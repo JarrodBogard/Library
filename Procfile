@@ -1,1 +1,1 @@
-web: ./server.js
+web: "./server.js"

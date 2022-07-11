@@ -3,7 +3,7 @@ const router = express.Router();
 const Author = require("../models/author");
 
 // All Authors
-router.get("/authors", async (req, res) => {
+router.get("/", async (req, res) => {
   let searchOptions = {};
   if (req.query.name != null && req.query.name !== "") {
     searchOptions.name = new RegExp(req.query.name, "i");

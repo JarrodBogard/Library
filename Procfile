@@ -1,2 +1,2 @@
-web: /index.js
+web: /server.js
 

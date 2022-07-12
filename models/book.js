@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const path = require("path")
+// const path = require("path") -- not used with FilePond
 
-const coverImageBasePath = "uploads/bookCovers"
+// const coverImageBasePath = "uploads/bookCovers" -- not used with FilePond
 
 const bookSchema = new mongoose.Schema({
   title: {
@@ -24,9 +24,13 @@ const bookSchema = new mongoose.Schema({
     required: true,
     default: Date.now
   },
-  coverImageName: {
-    type: String,
+  coverImage: { // coverImageName -- not used with FilePond
+    type: Buffer,
     required: true,
+  },
+  coverImageType: {
+    type: String,
+    required: true
   },
   author: {
     type: mongoose.Schema.Types.ObjectId,
@@ -36,12 +40,13 @@ const bookSchema = new mongoose.Schema({
 });
 
 bookSchema.virtual('coverImagePath').get(function() {
-  if (this.coverImageName != null) {
-    return path.join('/', coverImageBasePath, this.coverImageName)
+  if (this.coverImage != null && this.coverImageType != null) { // this.coverImageName -- not used with FilePond
+    return `data:${this.coverImageType};charset=utf-8;base64,${this.coverImage.toString("base64")}`
+    // return path.join('/', coverImageBasePath, this.coverImageName) -- not used with FilePond
   }
 })
 
 // have to use standard function syntax for "this" keyword - can't use arrow function//
 
 module.exports = mongoose.model("Book", bookSchema);
-module.exports.coverImageBasePath = coverImageBasePath
+// module.exports.coverImageBasePath = coverImageBasePath -- not used with FilePond

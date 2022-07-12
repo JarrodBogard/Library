@@ -23,7 +23,7 @@
 <div>
   <label>Publish Date</label>
   <input type="date" name="publishDate" value="<%= book.publishDate == null ? ""
-  : book.publishDate.toISOString().split("T")[0] %> ">
+  : book.publishDate.toISOString().split("T")[0] %>">
 </div>
 
 <!-- Page Count -->
@@ -33,14 +33,14 @@
     type="number"
     name="pageCount"
     min="1"
-    value="<%= book.pageCount %> "
+    value="<%= book.pageCount %>"
   />
 </div>
 
 <!-- Cover Image -->
 <div>
   <label>Cover</label>
-  <input type="file" name="cover" />
+  <input type="file" name="cover" class="filepond" />
 </div>
 
 <!-- Description -->

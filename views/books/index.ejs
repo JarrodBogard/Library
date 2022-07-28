@@ -6,11 +6,19 @@
   </div>
   <div>
     <label>Published After</label>
-    <input type="date" name="publishedAfter" value="<%= searchOptions.publishedAfter %>" />
+    <input
+      type="date"
+      name="publishedAfter"
+      value="<%= searchOptions.publishedAfter %>"
+    />
   </div>
   <div>
     <label>Published Before</label>
-    <input type="date" name="publishedBefore" value="<%= searchOptions.publishedBefore %>" />
+    <input
+      type="date"
+      name="publishedBefore"
+      value="<%= searchOptions.publishedBefore %>"
+    />
   </div>
 
   <button type="submit">Search</button>
@@ -19,8 +27,10 @@
 
 <div>
   <% books.forEach(book => { %>
-  <img height="150" width="100" src="<%= book.coverImagePath %>">
-  <% }) %>  
+  <a href="/books/<%= book.id %>">
+    <img height="150" width="100" src="<%= book.coverImagePath %>" />
+  </a>
+  <% }) %>
 </div>
 
 <!-- make sure quotations are next to properties without spaces between them -->
